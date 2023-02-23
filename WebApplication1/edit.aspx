@@ -40,7 +40,7 @@
                             <asp:TextBox CssClass="form-control" ID="TextBox3" runat="server" placeholder="date"></asp:TextBox>
                         </div>
                          </div>
-                        <label>dotor registered </label>
+                        <label>doctor registered </label>
                         <div class="form-group">
                             <asp:TextBox CssClass="form-control" ID="TextBox4" runat="server" placeholder="name"></asp:TextBox>
                         </div>

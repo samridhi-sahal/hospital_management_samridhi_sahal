@@ -16,21 +16,24 @@ namespace WebApplication1
         {
             try
             {
-                SqlConnection db_con = new SqlConnection("Data Source = HP\\SQLEXPRESS; Initial Catalog =hospital; Integrated Security=true");
+                if (!IsPostBack)
+               {
+                    SqlConnection db_con = new SqlConnection("Data Source = HP\\SQLEXPRESS; Initial Catalog =hospital; Integrated Security=true");
 
-                db_con.Open();
-                SqlCommand com = new SqlCommand("Select * from doctor_list", db_con);
-                // SqlDataAdapter adpt = new SqlDataAdapter(com);
-                // DataTable dt = new DataTable();
-                // adpt.Fill(dt);
+                    db_con.Open();
+                    SqlCommand com = new SqlCommand("Select * from doctor_list", db_con);
+                    // SqlDataAdapter adpt = new SqlDataAdapter(com);
+                    // DataTable dt = new DataTable();
+                    // adpt.Fill(dt);
 
-                // DropDownList1.DataSource = dt;
-                DropDownList1.DataSource = com.ExecuteReader();
-                DropDownList1.DataTextField = "doctor_name";
-                // DropDownList1.DataValueField = "ID";
-                DropDownList1.DataBind();
+                    // DropDownList1.DataSource = dt;
+                    DropDownList1.DataSource = com.ExecuteReader();
+                    DropDownList1.DataTextField = "doctor_name";
+                    // DropDownList1.DataValueField = "doctor_id";
+                    DropDownList1.DataBind();
+                    db_con.Close();
 
-
+                }
 
             }
             catch (Exception ex)
@@ -73,13 +76,26 @@ namespace WebApplication1
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 Label1.Text = "record found";
+                db_con.Close();
 
             }
             catch (Exception ex)
             {
                 Response.Write("<sript>alert('" + ex.Message + "');</script>");
             }
-        } 
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Redirect("edit.aspx");
+            }
+            catch(Exception ex)
+            {
+                Response.Write("<sript>alert('" + ex.Message + "');</script>");
+            }
+        }
     }
 
        

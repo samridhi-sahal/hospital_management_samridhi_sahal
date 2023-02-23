@@ -33,5 +33,8 @@
      <div class="form-group">
      <asp:Button class="btn btn-success btn-block btn-lg" ID="Button2" runat="server" Text="Add patient" OnClick="Button2_Click" />
                         </div>
+    <div class="form-group">
+     <asp:Button class="btn btn-success btn-block btn-lg" ID="Button4" runat="server" Text="Edit/Delete patient" OnClick="Button3_Click" />
+                        </div>
 
 </asp:Content>
